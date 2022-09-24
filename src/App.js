@@ -1,13 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Transaction from "./Component/Transaction";
-import Items from "./Component/Items";
+import FormComponent from "./Component/FormComponent";
+
 function App() {
   const design = { color: "red", textAligh: "Center", fontsize: "1.5rem" };
   return (
     <div className="container">
-      <h2 style={design}>แอพบัญชีรายรับ - รายจ่าย</h2>
-      <Transaction />
+      <div className="app-size">
+        <h2 style={design}>แอพบัญชีรายรับ - รายจ่าย</h2>
+        <FormComponent />
+        <Transaction />
+      </div>
     </div>
   );
 }
