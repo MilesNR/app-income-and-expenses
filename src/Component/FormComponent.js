@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const FormComponent = (props) => {
   const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const inputTitle = (event) => {
     setTitle(event.target.value);
   };
@@ -16,7 +16,7 @@ const FormComponent = (props) => {
     const itemData = { id: uuidv4(), title: title, amount: Number(amount) };
     props.onAddItem(itemData);
     setTitle("");
-    setAmount(0);
+    setAmount({});
   };
   return (
     <div>

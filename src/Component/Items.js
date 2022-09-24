@@ -1,10 +1,17 @@
+import "./Items.css";
 let Items = (props) => {
   const { title, amount } = props;
+  const status = amount < 0 ? "expense" : "income";
+  const symbol = amount < 0 ? "-" : "+";
 
   return (
-    <li>
+    <li className={status}>
       {title}
-      <span> {amount}</span>
+      <span>
+        {" "}
+        {symbol}
+        {Math.abs(amount)}
+      </span>
     </li>
   );
 };
