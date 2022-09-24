@@ -26,3 +26,8 @@ input {
 input:focus {
   outline: none;
 }
+
+button:disabled {
+  background-color: lightgray;
+  cursor: not-allowed;
+}

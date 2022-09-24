@@ -1,17 +1,12 @@
 import "./App.css";
 import Transaction from "./Component/Transaction";
 import FormComponent from "./Component/FormComponent";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import DataContext from "./Data/DataContext";
 import ReportComponent from "./Component/ReportComponent";
 
 function App() {
-  const initState = [
-    { id: 1, title: "ค่าเช่าบ้าน", amount: -8000 },
-    { id: 2, title: "ค่าน้ำ", amount: -600 },
-    { id: 3, title: "เงินเดือน", amount: 80000 },
-  ];
-  const [items, setItems] = useState(initState);
+  const [items, setItems] = useState([]);
   const [reportIncome, setReportIncome] = useState(0);
   const [reportExpense, setReportExpense] = useState(0);
   const onAddNewItem = (newItem) => {
@@ -31,6 +26,16 @@ function App() {
     setReportIncome(income);
     setReportExpense(expense);
   }, [items, reportIncome, reportExpense]);
+  const [showReport, setShowReport] = useState(false);
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "SHOW":
+        return setShowReport(true);
+      case "HIDE":
+        return setShowReport(false);
+    }
+  };
+  const [result, dispatch] = useReducer(reducer, showReport);
   return (
     <DataContext.Provider
       value={{
@@ -41,9 +46,11 @@ function App() {
       <div className="container">
         <div className="app-size">
           <h2 className="header-design">แอพบัญชีรายรับ - รายจ่าย</h2>
-          <ReportComponent />
+          {showReport && <ReportComponent />}
           <FormComponent onAddItem={onAddNewItem} />
           <Transaction items={items} />
+          <button onClick={() => dispatch({ type: "SHOW" })}>แสดง</button>
+          <button onClick={() => dispatch({ type: "HIDE" })}>ซ่อน</button>
         </div>
       </div>
     </DataContext.Provider>
