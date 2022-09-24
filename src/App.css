@@ -22,3 +22,10 @@ body {
   margin: 30px auto;
   width: 100%;
 }
+.app-size {
+  width: 500px;
+}
+.header-design {
+  text-align: center;
+  color: red;
+}
