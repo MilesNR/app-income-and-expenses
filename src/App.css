@@ -23,9 +23,26 @@ body {
   width: 100%;
 }
 .app-size {
-  width: 500px;
+  width: 400px;
 }
 .header-design {
   text-align: center;
   color: red;
+}
+.horizontal-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  text-align: center;
+}
+.horizontal-menu li {
+  display: inline-block;
+}
+.horizontal-menu li a {
+  color: white;
+  text-decoration: none;
+  padding: 16px;
+  display: block;
 }
